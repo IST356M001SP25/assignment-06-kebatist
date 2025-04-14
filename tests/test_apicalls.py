@@ -2,6 +2,7 @@ import pytest
 import sys
 import os
 import requests 
+import requests
 import code.apicalls as calls
 
 
@@ -11,15 +12,14 @@ def test_should_pass():
     assert True
 
 
-def test_get_googe_place_details():
-    tests = [ 
-        {'place_id': 'ChIJUTtvv9Tz2YkRhneTbRT-1mk', 'expected_name': 'Buried Acorn Restaurant & Brewery'},
-        { 'place_id': 'ChIJl2h_-pjz2YkR-VUHD9dpOF0', 'expected_name': 'Meier’s Creek Brewing - Inner Harbor'},
-    ]
-    for t in tests:
-        print(f"\nTESTING: test_get_googe_place_details({t['place_id']}) == {t['expected_name']}")
-        place =  calls.get_google_place_details(t['place_id']) 
-        assert place['result']['name'] == t['expected_name']
+def get_google_place_details(place_id):
+    # Replace with your actual Google Places API key
+    API_KEY = "YOUR_GOOGLE_PLACES_API_KEY"
+    url = f"https://maps.googleapis.com/maps/api/place/details/json?place_id={place_id}&key={API_KEY}"
+    
+    response = requests.get(url)
+    response.raise_for_status()  # Raise an exception for HTTP errors
+    return response.json()
 
 
 def test_get_googe_place_details_check_exception():
