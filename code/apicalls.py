@@ -1,18 +1,46 @@
 import requests
 
 # Put your CENT Ischool IoT Portal API KEY here.
-APIKEY = "APIKEYHERE"
+APIKEY = "89b6dc8fb35ed9372acafa46"
 
 def get_google_place_details(google_place_id: str) -> dict:
-    pass # Implement this function
+    '''
+    Given a Google Place ID, return the place details.
+    Written for example_etl.py
+    '''
+    header = { 'X-API-KEY': "89b6dc8fb35ed9372acafa46" }
+    params = { 'place_id': google_place_id }
+    url = "https://cent.ischool-iot.net/api/google/places/details"
+    response = requests.get(url, headers=header, params=params)
+    response.raise_for_status()
+    return response.json()
+   # pass # Implement this function
     
 def get_azure_sentiment(text: str) -> dict:
-    pass # Implement this function
+    header = { 'X-API-KEY': "89b6dc8fb35ed9372acafa46" }
+    data = { 'text': text }
+    url = "https://cent.ischool-iot.net/api/azure/sentiment"
+    response = requests.post(url, headers=header, data=params)
+    response.raise_for_status()
+    return response.json()  # Return the JSON response as a dictionary
+    # pass # Implement this function
 
 def get_azure_key_phrase_extraction(text: str) -> dict:
-    pass # Implement this function
+    header = { 'X-API-KEY': "89b6dc8fb35ed9372acafa46" }
+    data = { 'text': text }
+    url = "https://cent.ischool-iot.net/api/azure/keyphrasextraction"
+    response = requests.post(url, headers=header, data=params)
+    response.raise_for_status()
+    return response.json()  # Return the JSON response as a dictionary
+    #pass # Implement this function
 
 def get_azure_named_entity_recognition(text: str) -> dict:
+    header = { 'X-API-KEY': "89b6dc8fb35ed9372acafa46" }
+    data = { 'text': text }
+    url = "https://cent.ischool-iot.net/api/azure/entityrecognition"
+    response = requests.post(url, headers=header, data=params)
+    response.raise_for_status()
+    return response.json()  # Return the JSON response as a dictionary
     pass # Implement this function
 
 
@@ -40,3 +68,9 @@ def get_weather(lat: float, lon: float) -> dict:
     response = requests.get(url, headers=header, params=params)
     response.raise_for_status()
     return response.json()  # Return the JSON response as a dictionary
+
+if __name__ == '__main__':
+    # Test the functions here if needed
+    # Example: print(get_google_place_details('ChIJN1t_tDeuEmsRUsoyG83frY4'))
+    pass  # Implement this function to test the API calls
+    # Example: print(get_azure_sentiment('I love programming!'))
