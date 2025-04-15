@@ -10,8 +10,8 @@ def get_google_place_details(google_place_id: str) -> dict:
     '''
     header = "89b6dc8fb35ed9372acafa46"
     params = { 'place_id': google_place_id }
-    url = f"https://cent.ischool-iot.net/api/google/places/details"{google_place_id}&key="89b6dc8fb35ed9372acafa46"
-    response = requests.get(url)
+    url = f"https://cent.ischool-iot.net/api/google/places/details"
+    response = requests.get(url, headers=header, params=params)
     response.raise_for_status()  # Raise an exception for HTTP errors
     return response.json()
     
@@ -48,7 +48,7 @@ def geocode(place:str) -> dict:
     Given a place name, return the latitude and longitude of the place.
     Written for example_etl.py
     '''
-    header = { 'X-API-KEY': APIKEY }
+    header = { 'X-API-KEY': "89b6dc8fb35ed9372acafa46" }
     params = { 'location': place }
     url = "https://cent.ischool-iot.net/api/google/geocode"
     response = requests.get(url, headers=header, params=params)
@@ -61,7 +61,7 @@ def get_weather(lat: float, lon: float) -> dict:
     Given a latitude and longitude, return the current weather at that location.
     written for example_etl.py
     '''
-    header = { 'X-API-KEY': APIKEY }
+    header = { 'X-API-KEY': "89b6dc8fb35ed9372acafa46" }
     params = { 'lat': lat, 'lon': lon, 'units': 'imperial' }
     url = "https://cent.ischool-iot.net/api/weather/current"
     response = requests.get(url, headers=header, params=params)
