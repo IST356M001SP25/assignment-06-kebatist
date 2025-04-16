@@ -27,25 +27,30 @@ def geocode_step(locations: str|pd.DataFrame) -> pd.DataFrame:
 
     # if string, then its a filename so load into dataframe
     if isinstance(locations, str):
-        locations_df = pd.read_csv(locations)
+        locations_dataframe = pd.read_csv(locations)
+        # check if the file is empty
+        if locations_dataframe.empty:
+            raise ValueError(f"The file {locations} is empty. Please provide a valid file with location data.")
     else:
-        locations_df = locations
+        locations_dataframe = locations
 
     # transformations 
-    geocoded = []
-    for index, row  in locations_df.iterrows():
-        geo = geocode(row['location'])
-        # extract what we need
-        lat = geo['results'][0]['geometry']['location']['lat']
-        lon = geo['results'][0]['geometry']['location']['lng']
+    geocoded_data = []
+    for idx, row in locations_dataframe.iterrows():
+        geocode_result = geocode(row['location'])
+        # extract what we need, this is a nested dictionary
+        # the first result is the best result, so we take the first one
+        latitude = geocode_result['results'][0]['geometry']['location']['lat']
+        longitude = geocode_result['results'][0]['geometry']['location']['lng']
         # create item to add to list
-        geo_item = {'location': row['location'], 'lat': lat, 'lon': lon}
-        geocoded.append(geo_item)
-    geocoded_locations_df = pd.DataFrame(geocoded)
+        geocode_item = {'location': row['location'], 'lat': latitude, 'lon': longitude}
+        # append to list, this is a list of dictionaries, each dictionary is a row in the dataframe
+        geocoded_data.append(geocode_item)
+    geocoded_locations_dataframe = pd.DataFrame(geocoded_data)
 
     # save to cache, return dataframe
-    geocoded_locations_df.to_csv(GEOCODE_CACHE_FILE, index=False, header=True)
-    return geocoded_locations_df
+    geocoded_locations_dataframe.to_csv(GEOCODE_CACHE_FILE, index=False, header=True)
+    return geocoded_locations_dataframe
 
 def weather_step(geocoded_locations: str|pd.DataFrame) -> pd.DataFrame:
     '''
