@@ -16,7 +16,7 @@ def test_reviews_step_output():
     cols = ['place_id','name','author_name','rating','text']
 
     print(f"TESTING: {file} file exists")
-    assert os.path.exists(file)
+    assert os.path.exists(file), f"File {file} does not exist. Ensure the ETL process generates it."
 
     print(f"TESTING: {file} read_csv, {lines} lines")
     df = pd.read_csv(file)
@@ -24,7 +24,7 @@ def test_reviews_step_output():
     
     print(f"TESTING: {file} columns : {cols}")
     for c in df:
-        assert c.lower() in cols
+        assert c.lower() in cols, f"Column {c} is not in the expected columns: {cols}."
           
 def test_sentiment_step_output():
     file = etl.CACHE_SENTIMENT_FILE
@@ -37,7 +37,7 @@ def test_sentiment_step_output():
 
     print(f"TESTING: {file} read_csv, {lines} lines")
     df = pd.read_csv(file)
-    assert len(df) >=  lines
+    assert len(df) >= lines, f"File {file} contains {len(df)} rows, expected at least {lines} rows."
     
     print(f"TESTING: {file} columns : {cols}")
     for c in df:

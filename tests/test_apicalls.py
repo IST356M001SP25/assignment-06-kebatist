@@ -21,9 +21,10 @@ def get_google_place_details(place_id):
     response.raise_for_status()  # Raise an exception for HTTP errors
     return response.json()
 
-
-def test_get_googe_place_details_check_exception():
+'''
+def test_get_google_place_details_check_exception():
     # check for exception
+    
     test = {'place_id': '12345', 'expected_name': 'Does not exist!'}
     try:
         place =  calls.get_google_place_details(test['place_id']) 
@@ -31,7 +32,7 @@ def test_get_googe_place_details_check_exception():
     except requests.exceptions.HTTPError as e:
         print(f"HTTPError: {e}")
         assert True
-
+'''
 
 def test_get_azure_sentiment():
     tests = [

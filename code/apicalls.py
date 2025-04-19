@@ -8,18 +8,19 @@ def get_google_place_details(google_place_id: str) -> dict:
     Given a Google Place ID, return the place details.
     Written for example_etl.py
     '''
-    header = "89b6dc8fb35ed9372acafa46"
+    header = {'X-API-KEY: 89b6dc8fb35ed9372acafa46' }
     params = { 'place_id': google_place_id }
     url = f"https://cent.ischool-iot.net/api/google/places/details"
-    response = requests.get(url, headers=header, params=params)
+    response = requests.get(url=url, headers=header, params=params)
     response.raise_for_status()  # Raise an exception for HTTP errors
+
     return response.json()
     
 def get_azure_sentiment(text: str) -> dict:
     header = { 'X-API-KEY': "89b6dc8fb35ed9372acafa46" }
     data = { 'text': text }
     url = "https://cent.ischool-iot.net/api/azure/sentiment"
-    response = requests.post(url, headers=header, data=data)
+    response = requests.post(url=url, headers=header, data=data)
     response.raise_for_status()
     return response.json()  # Return the JSON response as a dictionary
     # pass # Implement this function
@@ -28,7 +29,7 @@ def get_azure_key_phrase_extraction(text: str) -> dict:
     header = { 'X-API-KEY': "89b6dc8fb35ed9372acafa46" }
     data = { 'text': text }
     url = "https://cent.ischool-iot.net/api/azure/keyphrasextraction"
-    response = requests.post(url, headers=header, data=data)
+    response = requests.post(url=url, headers=header, data=data)
     response.raise_for_status()
     return response.json()  # Return the JSON response as a dictionary
     #pass # Implement this function
@@ -37,7 +38,7 @@ def get_azure_named_entity_recognition(text: str) -> dict:
     header = { 'X-API-KEY': "89b6dc8fb35ed9372acafa46" }
     data = { 'text': text }
     url = "https://cent.ischool-iot.net/api/azure/entityrecognition"
-    response = requests.post(url, headers=header, data=data)
+    response = requests.post(url=url, headers=header, data=data)
     response.raise_for_status()
     return response.json()  # Return the JSON response as a dictionary
     pass # Implement this function
@@ -51,7 +52,7 @@ def geocode(place:str) -> dict:
     header = { 'X-API-KEY': "89b6dc8fb35ed9372acafa46" }
     params = { 'location': place }
     url = "https://cent.ischool-iot.net/api/google/geocode"
-    response = requests.get(url, headers=header, params=params)
+    response = requests.get(url=url, headers=header, params=params)
     response.raise_for_status()
     return response.json()  # Return the JSON response as a dictionary
 
