@@ -23,3 +23,10 @@ Examples:
 
 `--- Reflection Below This Line ---`
 
+Hi all, assignment 6 is finally complete. Now I am going to reflect on the challenges I had and the things I learned. apicalls.py was difficult for me because I had many code errors where my cache was unable to communicate with the path it was supposedly pulling from. After meeting with Anegla, I learned that I need to focus on functions and caling my programs so that I can test them. 
+
+I found myself writing either programs without actually testig them and then finding a ton of errors. This is something I want to work on before the end of the semester and my final project. 
+
+Some of mycode in apicall.py was not being linked through my API Key that was provided to me. I was able to use the site where I can test the API Key to my advantage. I did this by making sure that my key was wokring and running before I reimplimented it into the code for testing. While the logic of this assignment was not confusing, I do believe there are manyt things that I still lack the understanding of in this code. I am working to better understand dictionaries. Copilot wrote a bit of this program for me which led me to be more confused, but with some explanation from professor I can understand dictionaries. 
+
+I also had some issues with my testing navigation that made this aasignment take longer than I wanted it to. It would not load and that was a VS Code issue. 

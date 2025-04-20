@@ -25,6 +25,20 @@ def get_azure_sentiment(text: str) -> dict:
     return response.json()  # Return the JSON response as a dictionary
     # pass # Implement this function
 
+'''
+def get_azure_sentiment(text: str) -> dict:
+    """
+    Given a text input, return the sentiment analysis results from Azure API.
+    """
+    header = { 'X-API-KEY': APIKEY }  # Use the APIKEY variable for consistency
+    data = { 'text': text }
+    url = "https://new-api-path.net/api/azure/sentiment"  # Updated API path
+
+    response = requests.post(url=url, headers=header, data=data)
+    response.raise_for_status()  # Raise an exception for HTTP errors
+    return response.json()  # Return the JSON response as a dictionary
+'''
+
 def get_azure_key_phrase_extraction(text: str) -> dict:
     header = { 'X-API-KEY': "89b6dc8fb35ed9372acafa46" }
     data = { 'text': text }
