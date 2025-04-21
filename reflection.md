@@ -29,4 +29,6 @@ I found myself writing either programs without actually testig them and then fin
 
 Some of mycode in apicall.py was not being linked through my API Key that was provided to me. I was able to use the site where I can test the API Key to my advantage. I did this by making sure that my key was wokring and running before I reimplimented it into the code for testing. While the logic of this assignment was not confusing, I do believe there are manyt things that I still lack the understanding of in this code. I am working to better understand dictionaries. Copilot wrote a bit of this program for me which led me to be more confused, but with some explanation from professor I can understand dictionaries. 
 
-I also had some issues with my testing navigation that made this aasignment take longer than I wanted it to. It would not load and that was a VS Code issue. 
+One of the most important things I learned was how to properly use the requests library, especially the difference between GET and POST requests. I also learned how to pass API keys in headers ('X-API-KEY') and how to send parameters and data along with the request. Every response returned JSON, which I parsed using .json(), making it easy to work with in Python.
+
+I also had some issues with my testing navigation that made this aasignment take longer than I wanted it to. It would not load and that was a VS Code issue. This made the process of API keys less. intimidating 
