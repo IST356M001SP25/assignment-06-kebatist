@@ -31,4 +31,4 @@ Some of mycode in apicall.py was not being linked through my API Key that was pr
 
 One of the most important things I learned was how to properly use the requests library, especially the difference between GET and POST requests. I also learned how to pass API keys in headers ('X-API-KEY') and how to send parameters and data along with the request. Every response returned JSON, which I parsed using .json(), making it easy to work with in Python.
 
-I also had some issues with my testing navigation that made this aasignment take longer than I wanted it to. It would not load and that was a VS Code issue. This made the process of API keys less. intimidating 
+I also had some issues with my testing navigation that made this aasignment take longer than I wanted it to. It would not load and that was a VS Code issue. This made the process of API keys less intimidating. 
