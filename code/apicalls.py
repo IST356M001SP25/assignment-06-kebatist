@@ -7,6 +7,9 @@ def get_google_place_details(google_place_id: str) -> dict:
     '''
     Given a Google Place ID, return the place details.
     Written for example_etl.py
+
+    Maybe, this should be in a separate file, but for now, I am keeping it here.
+    # This function is used to get the details of a place from Google Places API.
     '''
     header = {'X-API-KEY: 89b6dc8fb35ed9372acafa46' }
     params = { 'place_id': google_place_id }
